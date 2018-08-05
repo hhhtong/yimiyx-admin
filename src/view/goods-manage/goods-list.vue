@@ -14,6 +14,7 @@
       <Button @click="handleQuery" type="primary" icon="ios-search" class="margin-left-20">查 询</Button>
       <Button @click="showModal = true" type="success" icon="plus-circled" class="margin-left-20">添加商品</Button>
       <ModalSaveGoods
+        ref="ModalSaveGoods"
         :show.sync="showModal"
         :default-modal-data="defaultModalData"
         :category-list="categoryList"
@@ -39,6 +40,7 @@ import { mapState } from 'vuex'
 import { Poptip, Tag } from 'iview'
 import { parseSearchField } from '@/libs/util'
 import tagColors from './components/TagColors.js'
+import cloneDeep from 'lodash.clonedeep'
 
 const onlineStatus = [
   { id: 'all', name: '全部' },
@@ -103,7 +105,10 @@ export default {
           width: 270,
           align: 'center',
           render: (h, { row, column, index }) => {
-            const categorys = this.__parseCategory(row.categorys)
+            // const categorys = this.__parseCategory(row.categorys)
+            const categorys = this.$refs
+              .ModalSaveGoods
+              .getJoinCategory(row.categoryIds)
             return categorys.map((item, index) => {
               return <div>
                 <Tag
@@ -258,7 +263,8 @@ export default {
 
     // - 编辑 | 添加 商品 -> 显示Modal
     handleEdit (row) {
-      const categorys = this.__parseCategory(row.categorys)
+      // const categorys = this.__parseCategory(row.categorys)
+      const categorys = cloneDeep(row.categorys)
       this.defaultModalData = { ...row, categorys }
       this.showModal = true
     },
@@ -297,26 +303,26 @@ export default {
           this.$Message.success('状态已更新')
         }
       })
-    },
+    }
 
     /**
      * 嵌套类目结构解析成平级
      * @param {Array<Object>} categorys - 类目数组
      * @return {Array<Object>}
      */
-    __parseCategory (categorys) {
-      let temp = []
-      const joinName = (current, name = '') => {
-        let currentName = name ? `${name} / ${current.name}` : current.name
-        if (current.children) {
-          for (const item of current.children) joinName(item, currentName)
-        } else {
-          temp.push({ name: currentName, id: current.id })
-        }
-      }
-      for (const item of categorys) joinName(item)
-      return temp
-    }
+    // __parseCategory (categorys) {
+    //   let temp = []
+    //   const joinName = (current, name = '') => {
+    //     let currentName = name ? `${name} / ${current.name}` : current.name
+    //     if (current.children) {
+    //       for (const item of current.children) joinName(item, currentName)
+    //     } else {
+    //       temp.push({ name: currentName, id: current.id })
+    //     }
+    //   }
+    //   for (const item of categorys) joinName(item)
+    //   return temp
+    // }
   }
 }
 </script>

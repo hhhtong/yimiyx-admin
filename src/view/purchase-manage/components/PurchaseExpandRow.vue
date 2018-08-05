@@ -44,8 +44,6 @@
 </template>
 
 <script>
-import { Tag } from 'iview'
-
 export default {
   name: 'purchase-details',
 

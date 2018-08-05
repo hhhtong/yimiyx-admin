@@ -30,10 +30,6 @@
             @on-blur="isOnce = false"
             placeholder="比如：450"
             style="width: 180px">
-            <Select v-model="formValidate.specUnit" slot="append" style="width: 70px">
-              <Option value="g">g</Option>
-              <Option value="个">个</Option>
-            </Select>
           </Input>
         </FormItem>
         <FormItem label="商品分类">
@@ -113,8 +109,7 @@ import tagColors from './TagColors.js'
 const formValidate = {
   goodsName: '',
   goodsAlias: '',
-  spec: '450',
-  specUnit: 'g',
+  spec: '450g',
   madeIn: '',
   stockQty: 0
 }
@@ -165,7 +160,7 @@ export default {
         val = cloneDeep(val)
         this.isEdit = true // 标记为编辑模式
         this.formValidate = val
-        this.categorys = this.getJoinCategory(val.categorys.map(item => item.id))
+        this.categorys = this.getJoinCategory(val.categoryIds)
       } else {
         this.isEdit = false // 标记为新增模式
         this.formValidate = cloneDeep(formValidate)

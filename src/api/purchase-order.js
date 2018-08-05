@@ -63,10 +63,10 @@ export function purchaseOrderDel (data) {
 /**
  * 修改采购单
  */
-export function purchaseOrderUpdate (data) {
-  return axios.request({
-    url: '/purchaseOrder/update',
-    method: 'post',
-    data
-  })
-}
+// export function purchaseOrderUpdate (data) {
+//   return axios.request({
+//     url: '/purchaseOrder/update',
+//     method: 'post',
+//     data
+//   })
+// }

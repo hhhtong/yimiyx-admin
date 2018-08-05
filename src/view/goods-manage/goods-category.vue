@@ -29,7 +29,7 @@
 import { cloneDeep } from 'lodash'
 import ModalTreeCategory from './components/ModalTreeCategory'
 import { categoryGet, categoryDel, categorySave } from '@/api'
-import { Badge, Poptip } from 'iview'
+import { Poptip } from 'iview'
 import { mapState } from 'vuex'
 
 export default {

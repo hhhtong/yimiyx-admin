@@ -79,7 +79,7 @@ import { parseSearchField } from '@/libs/util'
 import { mapState } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { InputNumber } from 'iview'
-import { purchaseOrderAdd, purchaseOrderUpdate, goodsGet, supplierGet } from '@/api'
+import { purchaseOrderAdd, goodsGet, supplierGet } from '@/api'
 
 const formData = {
   categoryID: '',

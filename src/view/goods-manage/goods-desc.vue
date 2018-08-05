@@ -158,7 +158,7 @@ initSize(size) {
                 action="/goods/uploadImg"
                 style="display: inline-block;">
                 <div class="upload-camera-1">
-                  <Icon type="camera" size="40"></Icon>
+                  <Icon type="md-camera" size="40"></Icon>
                 </div>
               </Upload>
             </FormItem>
@@ -192,7 +192,7 @@ initSize(size) {
                 action="/goods/uploadImg"
                 style="display: inline-block;">
                 <div class="upload-camera-2">
-                  <Icon type="camera" size="20"></Icon>
+                  <Icon type="md-camera" size="20"></Icon>
                 </div>
               </Upload>
             </FormItem>

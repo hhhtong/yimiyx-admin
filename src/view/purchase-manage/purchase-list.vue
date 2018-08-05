@@ -35,7 +35,7 @@
 import ModalAddPurchase from './components/ModalAddPurchase'
 import PurchaseExpandRow from './components/PurchaseExpandRow'
 import { mapState } from 'vuex'
-import { Badge, Tag, Poptip } from 'iview'
+import { Tag, Poptip } from 'iview'
 import { purchaseOrderGet, purchaseOrderDetails, purchaseOrderDel } from '@/api'
 import { parseSearchField } from '@/libs/util'
 
