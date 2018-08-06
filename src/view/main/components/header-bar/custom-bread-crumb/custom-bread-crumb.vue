@@ -9,8 +9,8 @@
   </div>
 </template>
 <script>
-import { showTitle } from '_c/common/util'
-import CommonIcon from '_c/common-icon'
+import { showTitle } from '_comp/common/util'
+import CommonIcon from '_comp/common-icon'
 import './custom-bread-crumb.less'
 export default {
   name: 'customBreadCrumb',

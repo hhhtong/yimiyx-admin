@@ -140,7 +140,7 @@
 </template>
 
 <script>
-import CountTo from '_c/count-to'
+import CountTo from '_comp/count-to'
 export default {
   name: 'count_to_page',
   components: {

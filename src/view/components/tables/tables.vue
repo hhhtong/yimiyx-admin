@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Tables from '_c/tables'
+import Tables from '_comp/tables'
 import { getTableData } from '@/api/data'
 export default {
   name: 'tables_page',

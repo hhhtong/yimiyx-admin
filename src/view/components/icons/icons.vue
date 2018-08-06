@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import Icons from '_c/icons'
-import CommonIcon from '_c/common-icon'
+import Icons from '_comp/icons'
+import CommonIcon from '_comp/common-icon'
 export default {
   name: 'icons_pages',
   components: {
