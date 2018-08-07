@@ -71,14 +71,14 @@ export default {
             // - mock
             data = {
               avator: 'https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png',
-              user_name: '浩海鸿通',
-              user_id: '1',
+              userName: '浩海鸿通',
+              userId: '1',
               access: ['super_admin', 'admin']
             }
           }
           commit('setAvator', data.avator)
-          commit('setUserName', data.user_name)
-          commit('setUserId', data.user_id)
+          commit('setUserName', data.userName)
+          commit('setUserId', data.userId)
           commit('setAccess', data.access)
           resolve(data)
         }).catch(err => {

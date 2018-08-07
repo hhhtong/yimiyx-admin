@@ -21,11 +21,11 @@ export function checkTaxNo (taxNo) {
 
 /**
  * 验证用户名输入格式
- * @param username
+ * @param userName
  * @returns {Boolean}
  */
-export function checkUserName (username) {
-  if (/^[a-zA-Z0-9_-]{3,16}$/.test(username)) { return true }
+export function checkUserName (userName) {
+  if (/^[a-zA-Z0-9_-]{3,16}$/.test(userName)) { return true }
   return false
 }
 
