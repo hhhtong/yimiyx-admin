@@ -89,9 +89,6 @@ export default {
       'addTag',
       'setLocal'
     ]),
-    ...mapActions([
-      'handleLogin'
-    ]),
     turnToPage (name) {
       if (name.indexOf('isTurnByHref_') > -1) {
         window.open(name.split('_')[1])

@@ -29,17 +29,18 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, {userName, password}) {
+    handleLogin ({ commit }, { userName, password }) {
       userName = userName.trim()
       return new Promise((resolve, reject) => {
         login({
           userName,
           password
         }).then(res => {
-          // const data = res.data
-          const data = '@@@@@@'
-          commit('setToken', data.token)
-          resolve()
+          if (res.code === 50000) {
+            resolve(res.data)
+          } else {
+            reject(new Error(res.msg))
+          }
         }).catch(err => {
           reject(err)
         })
@@ -48,7 +49,7 @@ export default {
     // 退出登录
     handleLogOut ({ state, commit }) {
       return new Promise((resolve, reject) => {
-        logout(state.token).then(() => {
+        logout().then(() => {
           commit('setToken', '')
           commit('setAccess', [])
           resolve()
@@ -64,22 +65,12 @@ export default {
     // 获取用户相关信息
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
-        getUserInfo(state.token).then(res => {
-          let data = res.data
-
-          if (!res) {
-            // - mock
-            data = {
-              avator: 'https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png',
-              userName: '浩海鸿通',
-              userId: '1',
-              access: ['super_admin', 'admin']
-            }
-          }
+        getUserInfo().then(res => {
+          const data = res.data
           commit('setAvator', data.avator)
           commit('setUserName', data.userName)
           commit('setUserId', data.userId)
-          commit('setAccess', data.access)
+          commit('setAccess', data.access || ['super_admin', 'admin']) // - mock
           resolve(data)
         }).catch(err => {
           reject(err)
