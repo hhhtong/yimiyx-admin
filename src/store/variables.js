@@ -7,5 +7,6 @@ export const state = {
 }
 
 export const getters = {
-  token: state => state.user.token
+  token: state => state.user.token,
+  csrfToken: state => state.user.csrfToken
 }

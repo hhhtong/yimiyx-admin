@@ -1,5 +1,5 @@
 import { login, logout, getUserInfo } from '@/api/user'
-import { setToken, getToken } from '@/libs/util'
+import { setToken, setCsrfToken, getToken, getCsrfToken } from '@/libs/util'
 
 export default {
   state: {
@@ -7,6 +7,7 @@ export default {
     userId: '',
     avatorImgPath: '',
     token: getToken(),
+    csrfToken: getCsrfToken(),
     access: ''
   },
   mutations: {
@@ -22,9 +23,10 @@ export default {
     setAccess (state, access) {
       state.access = access
     },
-    setToken (state, token) {
+    setToken (state, { token, csrf }) {
       state.token = token
       setToken(token)
+      setCsrfToken(csrf)
     }
   },
   actions: {
@@ -50,14 +52,14 @@ export default {
     handleLogOut ({ state, commit }) {
       return new Promise((resolve, reject) => {
         logout().then(() => {
-          commit('setToken', '')
+          commit('setToken', { token: '', csrf: '' })
           commit('setAccess', [])
           resolve()
         }).catch(err => {
           reject(err)
         })
         // 如果你的退出登录无需请求接口，则可以直接使用下面三行代码而无需使用logout调用接口
-        // commit('setToken', '')
+        // commit('setToken', { token: '', csrf: '' })
         // commit('setAccess', [])
         // resolve()
       })
@@ -66,12 +68,16 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         getUserInfo().then(res => {
-          const data = res.data
-          commit('setAvator', data.avator)
-          commit('setUserName', data.userName)
-          commit('setUserId', data.userId)
-          commit('setAccess', data.access || ['super_admin', 'admin']) // - mock
-          resolve(data)
+          if (res.code === 50000) {
+            const data = res.data
+            commit('setAvator', data.avator)
+            commit('setUserName', data.userName)
+            commit('setUserId', data.userId)
+            commit('setAccess', data.access || ['super_admin', 'admin']) // - mock
+            resolve(data)
+          } else {
+            resolve(data)
+          }
         }).catch(err => {
           reject(err)
         })

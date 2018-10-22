@@ -152,7 +152,7 @@ initSize(size) {
                 :max-size="2048"
                 :on-format-error="handleFormatError"
                 :on-exceeded-size="handleMaxSize"
-                :headers="{ 'x-csrf-token': token }"
+                :headers="{ 'x-csrf-token': csrfToken }"
                 :data="{ goodsNo: formData.goodsNo }"
                 type="drag"
                 action="/goods/uploadImg"
@@ -185,7 +185,7 @@ initSize(size) {
                 :on-format-error="handleFormatError"
                 :on-exceeded-size="handleMaxSize"
                 :before-upload="handleBeforeUpload"
-                :headers="{ 'x-csrf-token': token }"
+                :headers="{ 'x-csrf-token': csrfToken }"
                 :data="{ goodsNo: formData.goodsNo }"
                 multiple
                 type="drag"
@@ -251,7 +251,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['token']),
+    ...mapGetters(['csrfToken']),
     defaultFileList1 () {
       if (!this.formData.cover) return []
       return [{ url: this.formData.cover, status: 'finished' }]

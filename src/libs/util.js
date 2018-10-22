@@ -3,7 +3,8 @@ import Cookies from 'js-cookie'
 import config from '@/config'
 import { forEach, hasOneOf } from '@/libs/tools'
 
-export const TOKEN_KEY = 'CSRF_TOKEN'
+export const TOKEN_KEY = 'SESSION_ID'
+export const CSRF_TOKEN_KEY = 'CSRF_TOKEN'
 
 export const setToken = (token) => {
   Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1})
@@ -11,6 +12,16 @@ export const setToken = (token) => {
 
 export const getToken = () => {
   const token = Cookies.get(TOKEN_KEY)
+  if (token) return token
+  else return false
+}
+
+export const setCsrfToken = (token) => {
+  Cookies.set(CSRF_TOKEN_KEY, token, {expires: config.cookieExpires || 1})
+}
+
+export const getCsrfToken = () => {
+  const token = Cookies.get(CSRF_TOKEN_KEY)
   if (token) return token
   else return false
 }

@@ -2,7 +2,7 @@ import Axios from 'axios'
 import baseURL from '_conf/url'
 import { Message } from 'iview'
 import Cookies from 'js-cookie'
-import { TOKEN_KEY } from '@/libs/util'
+import { TOKEN_KEY, CSRF_TOKEN_KEY } from '@/libs/util'
 class httpRequest {
   constructor () {
     this.options = {
@@ -23,7 +23,7 @@ class httpRequest {
     // 添加请求拦截器
     instance.interceptors.request.use(config => {
       if (!config.url.includes('/users')) {
-        config.headers['x-csrf-token'] = Cookies.get(TOKEN_KEY)
+        config.headers['x-csrf-token'] = Cookies.get(CSRF_TOKEN_KEY)
       }
       // Spin.show()
       // 在发送请求之前做些什么
@@ -46,8 +46,11 @@ class httpRequest {
         // 后端服务在个别情况下回报201，待确认
         if (data.code === 4001) {
           Cookies.remove(TOKEN_KEY)
-          Message.error(data.msg || '未登录，或登录失效，请登录')
-          window.location.href = '/#/login'
+          Cookies.remove(CSRF_TOKEN_KEY)
+          if (window.location.pathname !== '/login') {
+            Message.error(data.msg || '未登录，或登录失效，请登录')
+            window.location.href = '/login'
+          }
         } else {
           if (data.msg) Message.error(data.msg)
         }

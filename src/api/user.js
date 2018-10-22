@@ -6,7 +6,7 @@ export const login = ({ userName, password }) => {
     password
   }
   return axios.request({
-    url: 'login',
+    url: '/login',
     data,
     method: 'post'
   })
@@ -14,14 +14,14 @@ export const login = ({ userName, password }) => {
 
 export const getUserInfo = () => {
   return axios.request({
-    url: 'user',
+    url: '/user',
     method: 'get'
   })
 }
 
 export const logout = () => {
   return axios.request({
-    url: 'logout',
+    url: '/logout',
     method: 'post'
   })
 }
