@@ -12,7 +12,7 @@ import axios from '@/libs/api.request'
  */
 export function couponGet (params) {
   return axios.request({
-    url: '/coupon',
+    url: '/api/coupon',
     method: 'get',
     params
   })
@@ -36,7 +36,7 @@ export function couponGet (params) {
  */
 export function couponSave (data) {
   return axios.request({
-    url: '/coupon',
+    url: '/api/coupon',
     method: 'post',
     data
   })
@@ -48,7 +48,7 @@ export function couponSave (data) {
  */
 export function couponDel (data) {
   return axios.request({
-    url: '/coupon',
+    url: '/api/coupon',
     method: 'delete',
     data
   })

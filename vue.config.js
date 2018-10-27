@@ -10,7 +10,7 @@ fs.writeFileSync(path.join(__dirname, './config/env.js'), `export default '${env
 
 const OUPUT_DIR = resolve('../yimiyx-server/public/static')
 // - 静态资源(js、css、img、fonts)的链接前缀
-const BASE_URL = env === 'production' ? '/public/static/' : '/'
+const BASE_URL = env === 'production' ? '//cdn.haohaihongtong.com/admin/static/' : '/'
 // - html文件生成的位置以及名字
 const FILENAME = resolve('../yimiyx-server/app/view/index.html')
 
@@ -50,6 +50,9 @@ module.exports = {
       .set('_conf', resolve('config'))
   },
   devServer: {
+    allowedHosts: [
+      '.haohaihongtong.com'
+    ],
     port: 7000, // - 启动端口
     // - 如果你的前端应用和后端 API 服务器没有运行在同一个主机上，
     // - 你需要在开发环境下将 API 请求代理到 API 服务器。

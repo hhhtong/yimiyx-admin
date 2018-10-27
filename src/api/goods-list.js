@@ -11,7 +11,7 @@ import axios from '@/libs/api.request'
  */
 export function goodsGet (params) {
   return axios.request({
-    url: '/goods',
+    url: '/api/goods',
     method: 'get',
     params
   })
@@ -28,7 +28,7 @@ export function goodsGet (params) {
  */
 export function goodsSave (data) {
   return axios.request({
-    url: '/goods/save',
+    url: '/api/goods/save',
     method: 'post',
     data
   })
@@ -40,7 +40,7 @@ export function goodsSave (data) {
  */
 export function goodsDel (data) {
   return axios.request({
-    url: '/goods/delete',
+    url: '/api/goods/delete',
     method: 'post',
     data
   })
@@ -52,7 +52,7 @@ export function goodsDel (data) {
  */
 export function goodsByIdGet (id) {
   return axios.request({
-    url: '/goods/one',
+    url: '/api/goods/one',
     method: 'get',
     params: { id }
   })
@@ -66,7 +66,7 @@ export function goodsByIdGet (id) {
  */
 export function goodsStatusToggle (data) {
   return axios.request({
-    url: '/goods/toggleStatus',
+    url: '/api/goods/toggleStatus',
     method: 'post',
     data
   })
@@ -83,7 +83,7 @@ export function goodsStatusToggle (data) {
  */
 export function goodsSaveFull (data) {
   return axios.request({
-    url: '/goods/saveFull',
+    url: '/api/goods/saveFull',
     method: 'post',
     data
   })

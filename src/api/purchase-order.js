@@ -12,7 +12,7 @@ import axios from '@/libs/api.request'
  */
 export function purchaseOrderGet (params) {
   return axios.request({
-    url: '/purchaseOrder',
+    url: '/api/purchaseOrder',
     method: 'get',
     params
   })
@@ -29,7 +29,7 @@ export function purchaseOrderGet (params) {
  */
 export function purchaseOrderAdd (data) {
   return axios.request({
-    url: '/purchaseOrder/add',
+    url: '/api/purchaseOrder/add',
     method: 'post',
     data
   })
@@ -41,7 +41,7 @@ export function purchaseOrderAdd (data) {
  */
 export function purchaseOrderDetails (id) {
   return axios.request({
-    url: '/purchaseOrder/details',
+    url: '/api/purchaseOrder/details',
     method: 'get',
     params: { id }
   })
@@ -54,7 +54,7 @@ export function purchaseOrderDetails (id) {
  */
 export function purchaseOrderDel (data) {
   return axios.request({
-    url: '/purchaseOrder/delete',
+    url: '/api/purchaseOrder/delete',
     method: 'post',
     data
   })
@@ -65,7 +65,7 @@ export function purchaseOrderDel (data) {
  */
 // export function purchaseOrderUpdate (data) {
 //   return axios.request({
-//     url: '/purchaseOrder/update',
+//     url: '/api/purchaseOrder/update',
 //     method: 'post',
 //     data
 //   })

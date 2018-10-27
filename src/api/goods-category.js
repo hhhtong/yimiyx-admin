@@ -5,7 +5,7 @@ import axios from '@/libs/api.request'
  */
 export function categoryGet (params) {
   return axios.request({
-    url: '/goodsCategory',
+    url: '/api/goodsCategory',
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function categoryGet (params) {
  */
 export function categoryDel (data) {
   return axios.request({
-    url: '/goodsCategory/delete',
+    url: '/api/goodsCategory/delete',
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function categoryDel (data) {
  */
 export function categorySave (data) {
   return axios.request({
-    url: '/goodsCategory/save',
+    url: '/api/goodsCategory/save',
     method: 'post',
     data
   })

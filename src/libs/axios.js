@@ -64,8 +64,8 @@ class httpRequest {
   }
   // 创建实例
   create () {
-    let conf = {
-      baseURL: baseURL,
+    const conf = {
+      baseURL,
       timeout: 90000,
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -80,7 +80,7 @@ class httpRequest {
   }
   // 请求实例
   request (options) {
-    var instance = this.create()
+    const instance = this.create()
     this.interceptors(instance, options.url)
     options = Object.assign({}, options)
     this.queue[options.url] = instance

@@ -7,6 +7,10 @@
     <Header style="background: white">
       <label>商品：</label>
       <Input v-model="listQuery.goods" clearable placeholder="请输入商品编号/名称" @keyup.native.enter="handleQuery" style="width: 160px"></Input>
+      <label class="margin-left-20">商品类别：</label>
+      <Select v-model="categoryIndex" @on-change="handleQuery" style="width:100px" filterable>
+        <Option v-for="(item, index) in categoryList" :value="index" :key="item.id">{{ item.name }}</Option>
+      </Select>
       <label class="margin-left-20">状态：</label>
       <Select v-model="listQuery.isOnline" @on-change="handleQuery" style="width:100px">
         <Option v-for="item in onlineStatus" :value="item.id" :key="item.id">{{ item.name }}</Option>
@@ -63,6 +67,7 @@ export default {
         goods: '', // - 商品名称 | 编号
         isOnline: 'all'
       },
+      categoryIndex: 0,
       onlineStatus,
       showModal: false,
       defaultModalData: false,
@@ -182,8 +187,18 @@ export default {
   computed: {
     ...mapState(['categoryList', 'tableConHeight']),
     _listQuery () {
+      let data = this.categoryList[this.categoryIndex]
+      if (data && data.children) {
+        data = data
+          .children
+          .map(item => item.children ? item.children.map(v => v.id) : item.id)
+          .toString()
+      } else {
+        data = []
+      } // 得到最子级的 id(1, 2, 3...)
+
       return parseSearchField({
-        query: this.listQuery,
+        query: { ...this.listQuery, categoryIds: data.toString() },
         field: 'goods',
         ID: 'goodsNo',
         name: 'goodsName'

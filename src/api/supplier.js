@@ -5,7 +5,7 @@ window.axios = axios
  */
 export function supplierGet (params) {
   return axios.request({
-    url: '/supplier',
+    url: '/api/supplier',
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function supplierGet (params) {
  */
 export function supplierAdd (data) {
   return axios.request({
-    url: '/supplier/add',
+    url: '/api/supplier/add',
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function supplierAdd (data) {
  */
 export function supplierDel (data) {
   return axios.request({
-    url: '/supplier/delete',
+    url: '/api/supplier/delete',
     method: 'post',
     data
   })
@@ -38,7 +38,7 @@ export function supplierDel (data) {
  */
 export function supplierUpdate (data) {
   return axios.request({
-    url: '/supplier/update',
+    url: '/api/supplier/update',
     method: 'post',
     data
   })
